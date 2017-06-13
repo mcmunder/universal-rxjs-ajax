@@ -24,6 +24,7 @@ request({url: 'http://some-api'})
 
 ```js
 // in file reduxModule.js:
+import {Observable} from 'rxjs'
 import {request} from 'universal-rxjs-ajax'
 
 export const GET_SOMETHING = 'GET_SOMETHING'
@@ -52,7 +53,7 @@ export const getSomethingEpic = action$ =>
     .mergeMap(action => 
       request({url: 'http://some-api/epic-stuff'})
         .map(({response}) => gotSomething(response))
-        .catch(error => logError(error))
+        .catch(error => Observable.of(logError(error)))
     )
 
 
