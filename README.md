@@ -7,9 +7,7 @@ suggestion made
 [here](https://github.com/ReactiveX/rxjs/issues/2099#issuecomment-288140971).
 
 `universal-rxjs-ajax` makes `Observable.ajax` available in `Node.js` by throwing
-in [xhr2](https://github.com/pwnall/node-xhr2) when necessary. Very helpful for
-testing `Observable.ajax`-based http requests with Node.js driven test
-frameworks.
+in [xhr2](https://github.com/pwnall/node-xhr2) when necessary.
 
 ## Usage
 
