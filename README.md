@@ -99,7 +99,7 @@ describe('reduxModule', () => {
     nock('http://some-api')
       .log(console.log)
       .get('/epic-stuff')
-      .reply(200, {epicStuff: []})
+      .reply(500)
 
     const response = await getSomethingEpic(action$)
       .toArray()
