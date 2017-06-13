@@ -1,6 +1,6 @@
 # universal-rxjs-ajax
 
-[![Join the chat at https://gitter.im/mcmunder/universal-rxjs-ajax](https://badges.gitter.im/mcmunder/universal-rxjs-ajax.svg)](https://gitter.im/mcmunder/universal-rxjs-ajax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/mcmunder/universal-rxjs-ajax.svg?branch=master)](https://travis-ci.org/mcmunder/universal-rxjs-ajax)[![Join the chat at https://gitter.im/mcmunder/universal-rxjs-ajax](https://badges.gitter.im/mcmunder/universal-rxjs-ajax.svg)](https://gitter.im/mcmunder/universal-rxjs-ajax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 All credit goes to [jayphelps](https://github.com/jayphelps). Copied from his
 suggestion made
