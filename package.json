@@ -22,23 +22,14 @@
   "homepage": "https://github.com/mcmunder/universal-rxjs-ajax",
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
-    "test": "npm run build && ./node_modules/.bin/jest --watchAll"
-  },
-  "jest": {
-    "haste": {
-      "providesModuleNodeModules": [
-        ".*"
-      ]
-    },
-    "testPathIgnorePatterns": [
-      "./src/"
-    ]
+    "test": "tape -r babel-register tests/**/*.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "jest": "^20.0.4"
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   },
   "dependencies": {
     "rxjs": "^5.4.0",
