@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`universal-rxjs-ajax request returns correct Observable 1`] = `
+AjaxObservable {
+  "_isScalar": false,
+  "request": Object {
+    "async": true,
+    "createXHR": [Function],
+    "crossDomain": false,
+    "headers": Object {},
+    "method": "GET",
+    "responseType": "json",
+    "timeout": 0,
+    "url": "http://foo.api.af",
+    "withCredentials": false,
+  },
+}
+`;
