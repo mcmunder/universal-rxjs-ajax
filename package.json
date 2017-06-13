@@ -22,7 +22,7 @@
   "homepage": "https://github.com/mcmunder/universal-rxjs-ajax",
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
-    "test": "tape -r babel-register tests/**/*.js"
+    "test": "tape -r babel-register tests/**/*.js | tap-spec"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
