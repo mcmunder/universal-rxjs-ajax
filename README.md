@@ -14,7 +14,13 @@ in [xhr2](https://github.com/pwnall/node-xhr2) when necessary.
 ```js
 import {request} from 'universal-rxjs-ajax'
 
-request({url: 'http://some-api'})
+// settings as accepted by Observable.ajax()
+const settings = {
+  url: 'http://some-api',
+  method: 'GET' // and so on...
+}
+
+request(settings)
   .subscribe(response => console.log(response))
 ```
 
@@ -97,7 +103,6 @@ describe('reduxModule', () => {
     const action$ = ActionsObservable.of(getSomething())
 
     nock('http://some-api')
-      .log(console.log)
       .get('/epic-stuff')
       .reply(500)
 
