@@ -20,11 +20,14 @@ const settings = {
   method: 'GET' // and so on...
 }
 
-request(settings)
-  .subscribe(response => console.log(response))
+request(settings).subscribe(response => console.log(response))
 ```
 
 ## Examples
+
+### runkit playbook
+
+https://runkit.com/mcmunder/universal-rxjs-ajax-playground
 
 ### redux-observable and jest
 
@@ -54,22 +57,20 @@ export const logError = error => ({
 
 // export default reducer ...
 
-export const getSomethingEpic = action$ => 
-  action$.ofType(GET_SOMETHING)
-    .mergeMap(action => 
-      request({url: 'http://some-api/epic-stuff'})
-        .map(({response}) => gotSomething(response))
-        .catch(error => Observable.of(logError(error)))
-    )
-
+export const getSomethingEpic = action$ =>
+  action$.ofType(GET_SOMETHING).mergeMap(action =>
+    request({url: 'http://some-api/epic-stuff'})
+      .map(({response}) => gotSomething(response))
+      .catch(error => Observable.of(logError(error)))
+  )
 
 // in file reduxModule.test.js:
 /**
-* @jest-environment node
-*/
+ * @jest-environment node
+ */
 
 // jsdom does not handle the XMLHttpRequest correctly!
-// The above docbloc changes the jest environment to node for tests in this 
+// The above docbloc changes the jest environment to node for tests in this
 // file only. jsdom happens to be the default setting for create-react-app so
 // make sure to put in the docbloc when you are using it!
 
@@ -108,7 +109,7 @@ describe('reduxModule', () => {
 
     const response = await getSomethingEpic(action$)
       .toArray()
-      .toPromise() 
+      .toPromise()
 
     expect(response).toMatchSnapshot()
   })
