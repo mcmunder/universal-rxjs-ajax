@@ -25,7 +25,7 @@ test('request returns correct Observable', t => {
     _isScalar: false,
     request: {
       async: true,
-      crossDomain: false,
+      crossDomain: true,
       headers: {},
       method: 'GET',
       responseType: 'json',

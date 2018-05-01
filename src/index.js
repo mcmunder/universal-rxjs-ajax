@@ -1,4 +1,4 @@
-import { ajax } from 'rxjs/observable/dom/ajax'
+import { ajax } from 'rxjs/ajax'
 import xhr2 from 'xhr2'
 
 const XHR2 = typeof XMLHttpRequest !== 'undefined'
