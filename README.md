@@ -25,7 +25,7 @@ request(settings).subscribe(response => console.log(response))
 
 ## Examples
 
-### runkit playbook
+### runkit playground
 
 https://runkit.com/mcmunder/universal-rxjs-ajax-playground
 

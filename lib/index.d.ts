@@ -1,4 +1,4 @@
-import {AjaxRequest, AjaxResponse} from 'rxjs/observable/dom/AjaxObservable'
-import {Observable} from 'rxjs/Observable'
+import {AjaxRequest, AjaxResponse} from 'rxjs/ajax'
+import {Observable} from 'rxjs'
 
 export function request(options: AjaxRequest): Observable<AjaxResponse>
