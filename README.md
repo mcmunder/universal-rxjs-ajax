@@ -12,113 +12,27 @@ in [xhr2](https://github.com/pwnall/node-xhr2) when necessary.
 ## Usage
 
 ```js
-import {request} from 'universal-rxjs-ajax'
+const {map} = require('rxjs/operators')
+const {request} = require('universal-rxjs-ajax')
 
 // settings as accepted by Observable.ajax()
 const settings = {
-  url: 'http://some-api',
+  url: 'https://api.github.com/orgs/Reactive-Extensions/repos',
   method: 'GET' // and so on...
 }
 
-request(settings).subscribe(response => console.log(response))
+request(settings)
+  .pipe(map(({response}) => response.map(r => r.name)))
+  .subscribe(repoNames => console.log(repoNames))
 ```
 
-## Examples
-
-### runkit playground
+## Try it yourself
 
 https://runkit.com/mcmunder/universal-rxjs-ajax-playground
 
-### redux-observable and jest
-
-```js
-// in file reduxModule.js:
-import {Observable} from 'rxjs'
-import {request} from 'universal-rxjs-ajax'
-
-export const GET_SOMETHING = 'GET_SOMETHING'
-export const GOT_SOMETHING = 'GOT_SOMETHING'
-export const LOG_ERROR = 'LOG_ERROR'
-
-export const getSomething = () => ({
-  type: GET_SOMETHING
-})
-
-export const gotSomething = response => ({
-  type: GOT_SOMETHING,
-  payload: response
-})
-
-export const logError = error => ({
-  type: LOG_ERROR,
-  payload: error,
-  error: true
-})
-
-// export default reducer ...
-
-export const getSomethingEpic = action$ =>
-  action$.ofType(GET_SOMETHING).mergeMap(action =>
-    request({url: 'http://some-api/epic-stuff'})
-      .map(({response}) => gotSomething(response))
-      .catch(error => Observable.of(logError(error)))
-  )
-
-// in file reduxModule.test.js:
-/**
- * @jest-environment node
- */
-
-// jsdom does not handle the XMLHttpRequest correctly!
-// The above docbloc changes the jest environment to node for tests in this
-// file only. jsdom happens to be the default setting for create-react-app so
-// make sure to put in the docbloc when you are using it!
-
-import nock from 'nock'
-import {ActionObservable} from 'redux-observable'
-import {getSomething, getSomethingEpic} from './reduxModule'
-
-describe('reduxModule', () => {
-  // make sure nock does not interfere with other tests...
-  afterEach(() => {
-    nock.cleanAll()
-  })
-
-  test('getSomethingEpic returns correct action with response', async () => {
-    const action$ = ActionsObservable.of(getSomething())
-
-    // intercept request with nock
-    nock('http://some-api')
-      .log(console.log) // log interceptions for debugging
-      .get('/epic-stuff')
-      .reply(200, {epicStuff: []})
-
-    const response = await getSomethingEpic(action$)
-      .toArray() // buffers all emitted actions until Epic completes
-      .toPromise() // turn Observable back to Promise so it can be awaited
-
-    expect(response).toMatchSnapshot() // snapshots are great!
-  })
-
-  test('getSomethingEpic returns correct action with error', async () => {
-    const action$ = ActionsObservable.of(getSomething())
-
-    nock('http://some-api')
-      .get('/epic-stuff')
-      .reply(500)
-
-    const response = await getSomethingEpic(action$)
-      .toArray()
-      .toPromise()
-
-    expect(response).toMatchSnapshot()
-  })
-})
-```
-
 ## Copyright and license
 
-Copyright 2017, Matthias Munder.  
+Copyright 2018, Matthias Munder.  
 Licensed under the [MIT license](./LICENSE).
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
