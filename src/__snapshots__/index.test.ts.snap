@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`universal-rx-js-ajax request returns Observable 1`] = `
+Observable {
+  "_subscribe": [Function],
+}
+`;

@@ -1,9 +1,13 @@
 {
   "name": "universal-rxjs-ajax",
-  "version": "2.0.4",
   "description": "Makes rxjs's ajax available in Node.js",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "version": "2.0.4",
+  "type": "module",
+  "source": "src/index.ts",
+  "exports": "./dist/universal-rxjs-ajax.modern.js",
+  "main": "./dist/universal-rxjs-ajax.cjs",
+  "module": "./dist/universal-rxjs-ajax.module.js",
+  "unpkg": "./dist/universal-rxjs-ajax.umd.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mcmunder/universal-rxjs-ajax.git"
@@ -22,29 +26,30 @@
   },
   "homepage": "https://github.com/mcmunder/universal-rxjs-ajax",
   "scripts": {
-    "build": "babel src --out-dir lib --source-maps && cp ./src/index.d.ts ./lib/index.d.ts",
-    "test": "tape -r @babel/register tests/**/*.js | tap-spec"
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/register": "^7.8.6",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-json": "^2.1.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1",
-    "rxjs": "^6.5.4",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.13.2"
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^26.6.3",
+    "microbundle": "^0.13.0",
+    "prettier": "^2.2.1",
+    "rxjs": "^7.0.0",
+    "ts-jest": "^26.5.6",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
-    "xhr2": "^0.2.0"
+    "xhr2": "^0.2.1"
   },
   "peerDependencies": {
-    "rxjs": ">=6.5.4"
+    "rxjs": ">=7.0.0"
   }
 }

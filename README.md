@@ -11,18 +11,22 @@ in [xhr2](https://github.com/pwnall/node-xhr2) when necessary.
 
 ## Usage
 
-```js
+```ts
 const {map} = require('rxjs/operators')
 const {request} = require('universal-rxjs-ajax')
 
-// settings as accepted by Observable.ajax()
-const settings = {
+interface Repo {
+  name: string
+}
+
+// config as accepted by Observable.ajax()
+const config = {
   url: 'https://api.github.com/orgs/Reactive-Extensions/repos',
   method: 'GET' // and so on...
 }
 
-request(settings)
-  .pipe(map(({response}) => response.map(r => r.name)))
+request<Repo[]>(config)
+  .pipe(map(({response}) => response.map((repo: Repo) => repo.name)))
   .subscribe(repoNames => console.log(repoNames))
 ```
 
