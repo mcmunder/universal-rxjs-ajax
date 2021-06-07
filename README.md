@@ -22,12 +22,12 @@ interface Repo {
 // config as accepted by Observable.ajax()
 const config = {
   url: 'https://api.github.com/orgs/Reactive-Extensions/repos',
-  method: 'GET' // and so on...
+  method: 'GET', // and so on...
 }
 
 request<Repo[]>(config)
   .pipe(map(({response}) => response.map((repo: Repo) => repo.name)))
-  .subscribe(repoNames => console.log(repoNames))
+  .subscribe((repoNames) => console.log(repoNames))
 ```
 
 ## Try it yourself
