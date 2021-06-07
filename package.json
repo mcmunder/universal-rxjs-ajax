@@ -2,11 +2,10 @@
   "name": "universal-rxjs-ajax",
   "description": "Makes rxjs's ajax available in Node.js",
   "version": "2.0.4",
-  "type": "module",
   "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
   "exports": "./dist/universal-rxjs-ajax.modern.js",
-  "main": "./dist/universal-rxjs-ajax.cjs",
+  "main": "./dist/universal-rxjs-ajax.js",
   "module": "./dist/universal-rxjs-ajax.module.js",
   "unpkg": "./dist/universal-rxjs-ajax.umd.js",
   "repository": {
