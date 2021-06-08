@@ -2,12 +2,16 @@
   "name": "universal-rxjs-ajax",
   "description": "Makes rxjs's ajax available in Node.js",
   "version": "3.0.0-beta.3",
-  "source": "./src/index.ts",
-  "types": "./dist/index.d.ts",
-  "exports": "./dist/universal-rxjs-ajax.modern.js",
-  "main": "./dist/universal-rxjs-ajax.js",
-  "module": "./dist/universal-rxjs-ajax.module.js",
-  "unpkg": "./dist/universal-rxjs-ajax.umd.js",
+  "type": "module",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "main": "dist/universal-rxjs-ajax.cjs",
+  "umd:main": "dist/universal-rxjs-ajax.umd.js",
+  "module": "dist/universal-rxjs-ajax.module.js",
+  "exports": {
+    "node": "./dist/universal-rxjs-ajax.cjs",
+    "import": "./dist/universal-rxjs-ajax.cjs.modern.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mcmunder/universal-rxjs-ajax.git"
