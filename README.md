@@ -26,7 +26,7 @@ const config = {
 }
 
 request<Repo[]>(config)
-  .pipe(map(({response}) => response.map((repo: Repo) => repo.name)))
+  .pipe(map(({response}) => response.map((repo) => repo.name)))
   .subscribe((repoNames) => console.log(repoNames))
 ```
 
