@@ -2,6 +2,10 @@ import {Observable} from 'rxjs'
 import {map} from 'rxjs/operators'
 import {request} from './index'
 
+type Repo = {
+  name: string
+}
+
 describe('universal-rx-js-ajax', () => {
   test('request returns Observable', () => {
     const result = request({url: 'http://some-api.af'})
@@ -10,10 +14,6 @@ describe('universal-rx-js-ajax', () => {
   })
 
   test('README example works', () => {
-    interface Repo {
-      name: string
-    }
-
     // config as accepted by Observable.ajax()
     const config = {
       url: 'https://api.github.com/orgs/Reactive-Extensions/repos',
